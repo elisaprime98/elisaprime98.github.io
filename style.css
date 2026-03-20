@@ -1,0 +1,1097 @@
+/* ===== СБРОС ОТСТУПОВ ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+font-family: 'Nozhik';
+src: url('fonts/Nozhik.otf') format('opentype');
+font-weight: 700;
+font-style: normal;
+font-display: swap;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #0D3120;
+
+   /* ===== Firefox - кастомный скроллбар ===== */
+scrollbar-width: thin !important;
+scrollbar-color: #E9C325 #0C261A !important;
+}
+
+body {
+width: 100%;
+height: 100%;
+margin: 0;
+padding: 0;
+overflow-x: hidden;
+overflow-y: scroll;
+background-color: #0D3120;
+
+/* ===== Firefox - кастомный скроллбар ===== */
+scrollbar-width: thin !important;
+scrollbar-color: #E9C325 #0C261A !important;
+}
+
+/* ===== IE и Edge ===== */
+html, body {
+-ms-overflow-style: auto !important;
+}
+
+/* ===== Chrome, Safari, Opera, Edge - кастомный скроллбар ===== */
+html::-webkit-scrollbar {
+width: 8px !important;
+background: #0C261A !important;
+}
+
+body::-webkit-scrollbar {
+width: 8px !important;
+background: #0C261A !important;
+}
+
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+background: #E9C325 !important;
+border-radius: 4px !important;
+}
+
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
+background: #0C261A !important; 
+}
+
+/* ===== ФИКСИРОВАННЫЙ ВЕРХНИЙ ХЕДЕР ===== */
+.fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 86px;
+    background-color: #0C261A;
+    opacity: 0.95;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+}
+
+.header-content {
+    width: 1920px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 163px 0 163px;
+    position: relative;
+}
+
+/* Контейнер для правой части (меню, кнопка, бургер) */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-left: -100px;
+    margin-right: 0;
+}
+
+/* Стили для меню в фиксированном хедере */
+.menu-item-fixed {
+    color: white;
+    font-size: 24px;
+    font-family: Montserrat;
+    font-weight: 500;
+    letter-spacing: 1.20px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    white-space: nowrap;
+}
+
+.menu-item-fixed:hover {
+    color: #E9C325;
+}
+
+/* Кнопка КУПИТЬ в фиксированном хедере */
+.buy-button-fixed {
+    width: 165px;
+    height: 53px;
+    background-color: #E9C325;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buy-button-fixed:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(233, 195, 37, 0.3);
+}
+
+.button-text-fixed {
+    color: #040404;
+    font-family: Montserrat;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* Бургер-меню в фиксированном хедере */
+.burger-container-fixed {
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.burger-container-fixed .burger-line {
+    width: 40px;
+    height: 5px;
+    background-color: #E9C325;
+    margin: 6px 0;
+    transition: all 0.3s ease;
+    border-radius: 3px;
+}
+
+.burger-container-fixed.open .burger-line:nth-child(1) {
+    transform: rotate(45deg) translate(12px, 12px);
+}
+
+.burger-container-fixed.open .burger-line:nth-child(2) {
+    opacity: 0;
+    transform: scale(0);
+}
+
+.burger-container-fixed.open .burger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(12px, -12px);
+}
+
+/* ===== СТИЛИ ДЛЯ КНОПОК ===== */
+.button-group {
+    position: absolute;
+    cursor: pointer;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+}
+
+.button-bg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.button-text {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Montserrat;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.button-group:hover .button-bg,
+.button-group:hover .button-text {
+    transform: scale(1.1);
+    filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.2));
+}
+
+/* ===== СТИЛИ ДЛЯ ПРЫГАЮЩЕЙ СТРЕЛОЧКИ ===== */
+.scroll-arrow {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: gentleBounce 2.5s ease-in-out infinite;
+    color: #999999;
+    pointer-events: none;
+}
+
+.scroll-arrow i {
+    font-size: 32px;
+    margin-bottom: 5px;
+    color: #999999;
+}
+
+.scroll-text {
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #E9C325;
+}
+
+@keyframes gentleBounce {
+    0%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    50% {
+        transform: translateX(-50%) translateY(-15px);
+    }
+}
+
+/* ===== АНИМАЦИИ ВЫЛЕТА ===== */
+@keyframes flyFromLeftLogo {
+    0% {
+        opacity: 0;
+        transform: translateX(-200px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.fly-left-logo {
+    animation: flyFromLeftLogo 1.2s ease-out forwards;
+}
+
+@keyframes flyFromBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fly-bottom-delay-yellow {
+    animation: flyFromBottom 0.8s ease-out forwards;
+    animation-delay: 1.2s;
+    opacity: 0;
+}
+
+@keyframes flyFromLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.fly-left-delay {
+    animation: flyFromLeft 0.9s ease-out forwards;
+    animation-delay: 1.4s;
+    opacity: 0;
+}
+
+@keyframes flyFromBottomForButton {
+    0% {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fly-bottom-delay {
+    animation: flyFromBottomForButton 0.8s ease-out forwards;
+    animation-delay: 1.8s;
+    opacity: 0;
+}
+
+.fly-bottom-delay-2 {
+    animation: flyFromBottomForButton 0.8s ease-out forwards;
+    animation-delay: 2.0s;
+    opacity: 0;
+}
+
+/* ===== СТИЛИ ДЛЯ НИЖНИХ БЛОКОВ ===== */
+
+
+.bottom-block-yellow {
+    width: 1920px;
+    height: 80px;
+    background-color: #E9C325;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    border-top: 2px solid #0D3120;
+    border-bottom: 2px solid #0D3120;
+}
+
+.scrolling-text-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.scrolling-text {
+    white-space: nowrap;
+    line-height: 80px;
+    color: #1A1A1A;
+    font-family: Montserrat;
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    animation: scrollText 22s linear infinite;
+    display: inline-block;
+    position: relative;
+}
+
+.scrolling-text::after {
+    content: " ✦ НАТУРАЛЬНАЯ КОСМЕТИКА РУЧНОЙ РАБОТЫ ✦ БЕЗ ТЕСТОВ НА ЖИВОТНЫХ ✦ ЭКОЛОГИЧНАЯ УПАКОВКА ✦ 100% ОРГАНИЧЕСКИЕ ИНГРЕДИЕНТЫ ✦";
+    white-space: nowrap;
+    margin-left: 50px;
+    font-family: Montserrat;
+    font-weight: 600;
+    color: #1A1A1A;
+}
+
+@keyframes scrollText {
+    0% { 
+        transform: translateX(0%);
+    }
+    100% { 
+        transform: translateX(-50%);
+    }
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 86px;
+}
+
+.slide-container {
+    width: 1920px;
+    height: 1080px;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.first-slide {
+    margin-top: 0;
+}
+
+.second-slide {
+    background: transparent !important;
+}
+
+.second-slide img:not(.second-slide-image),
+.second-slide [style*="background"] {
+    display: none !important;
+}
+
+/* ===== ЭФФЕКТ ПАРАЛЛАКСА ДЛЯ ИЗОБРАЖЕНИЯ НА ПЕРВОМ СЛАЙДЕ ===== */
+.parallax-image {
+    width: 1920px;
+    height: 1080px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    object-fit: cover;
+    z-index: 0;
+    transition: transform 0.05s linear;
+    will-change: transform;
+}
+
+/* ===== СТИЛИ ДЛЯ ВТОРОГО СЛАЙДА ===== */
+.second-slide-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 80px;
+    padding: 0 10%;
+}
+
+.second-slide-text {
+    color: white;
+    font-family: Montserrat;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 45px;
+    letter-spacing: 0.05em;
+    max-width: 60%;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-kerning: normal;
+    orphans: 2;
+    widows: 2;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: none;
+}
+
+.second-slide-image {
+    width: 584px;
+    height: 579px;
+    border-radius: 20px;
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
+    object-fit: cover;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: none;
+}
+
+/* ===== СТИЛИ ДЛЯ ТРЕТЬЕГО СЛАЙДА ===== */
+.third-slide {
+    position: relative;
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.third-slide-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    transition: transform 0.05s linear;
+    will-change: transform;
+}
+
+.third-slide-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #0D3120;
+    opacity: 0.9;
+    z-index: 1;
+}
+
+.trapezoid-bottom {
+    position: absolute;
+    width: 1079px;
+    height: 330px;
+    left: 0;
+    bottom: 0;
+    background: #0D3120;
+    opacity: 0.9;
+    z-index: 2;
+    clip-path: polygon(0 0, 85% 0, 100% 100%, 0% 100%);
+}
+
+.trapezoid-top {
+    position: absolute;
+    width: 1079px;
+    height: 330px;
+    right: 0;
+    top: 0;
+    background: #0D3120;
+    opacity: 0.9;
+    z-index: 2;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 15% 100%);
+}
+
+.catalog-title {
+    position: absolute;
+    left: 293px;
+    top: 120px;
+    z-index: 5;
+    color: white;
+    font-size: 82px;
+    font-family: Montserrat;
+    font-weight: 600;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    letter-spacing: 0;
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: none;
+}
+
+.catalog-items {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+}
+
+.catalog-item {
+    position: absolute;
+    top: 330px;
+    width: 308px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: none;
+}
+
+.catalog-item:nth-child(1) { left: 293px; }
+.catalog-item:nth-child(2) { left: 635px; }
+.catalog-item:nth-child(3) { left: 977px; }
+.catalog-item:nth-child(4) { left: 1319px; }
+
+.item-image {
+    width: 308px;
+    height: 343px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    object-fit: cover;
+}
+
+.item-image:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.item-title {
+    position: absolute;
+    top: 353px;
+    color: #E9C325;
+    font-size: 20px;
+    font-family: Montserrat;
+    font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    text-align: left;
+}
+
+.item-description {
+    position: absolute;
+    top: 390px;
+    width: 308px;
+    color: white;
+    font-size: 15px;
+    font-family: Montserrat;
+    font-weight: 600;
+    line-height: 1.4;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.second-slide {
+    margin-bottom: 0;
+}
+
+.third-slide {
+    margin-top: 0;
+}
+/* ===== СТРЕЛКА НА ПОЛНЫЙ КАТАЛОГ (3-й слайд) ===== */
+.catalog-arrow {
+    position: absolute;
+    left: 1670px;
+    top: 450px;   
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: transform 0.3s ease;
+    
+    /* Изначально скрыта */
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.8s cubic-bezier(0.25, 0.1, 0.2, 1), 
+                transform 0.8s cubic-bezier(0.25, 0.1, 0.2, 1),
+                transform 0.3s ease;
+}
+
+/* Анимация появления после всех карточек */
+.catalog-arrow.visible {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+    transition: opacity 0.8s cubic-bezier(0.25, 0.1, 0.2, 1), 
+                transform 0.8s cubic-bezier(0.25, 0.1, 0.2, 1);
+}
+
+.catalog-arrow i {
+    font-size: 48px;
+    color: #E9C325;
+    transition: transform 0.3s ease, color 0.3s ease;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+.arrow-text {
+    color: white;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+    white-space: nowrap;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 4px 12px;
+    border-radius: 20px;
+    backdrop-filter: blur(2px);
+}
+
+/* Эффекты при наведении */
+.catalog-arrow:hover {
+    transform: translateX(5px) !important;
+}
+
+.catalog-arrow:hover i {
+    transform: translateX(8px);
+    color: #ffffff;
+}
+
+.catalog-arrow:hover .arrow-text {
+    opacity: 1;
+    background: rgba(233, 195, 37, 0.8);
+    color: #0D3120;
+}
+
+/* Анимация пульсации (только когда видима) */
+.catalog-arrow.visible {
+    animation: gentlePulse 2s ease-in-out infinite;
+}
+
+@keyframes gentlePulse {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(8px);
+    }
+}
+
+/* Отключаем пульсацию при наведении */
+.catalog-arrow.visible:hover {
+    animation: none;
+}
+
+/* Адаптивность */
+@media (max-width: 1600px) {
+    .catalog-arrow {
+        left: 88%;
+        top: 27%;
+    }
+    
+    .catalog-arrow i {
+        font-size: 42px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .catalog-arrow {
+        left: 86%;
+        top: 25%;
+    }
+    
+    .catalog-arrow i {
+        font-size: 36px;
+    }
+    
+    .arrow-text {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    .catalog-arrow {
+        left: 84%;
+        top: 22%;
+    }
+    
+    .catalog-arrow i {
+        font-size: 32px;
+    }
+}
+
+/* ===== СТИЛИ ДЛЯ ЧЕТВЁРТОГО СЛАЙДА ===== */
+.fourth-slide {
+    position: relative;
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+/* Фон из примера */
+.fourth-slide-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #113625;
+    z-index: 0;
+}
+
+/* Затемнение */
+.fourth-slide-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #0D3120;
+    opacity: 0.9;
+    z-index: 1;
+}
+
+/* ===== СТИЛИ ДЛЯ КНОПОК-ВКЛАДОК С ЗАКРУГЛЕННЫМИ УГЛАМИ ===== */
+.fourth-slide .blog-tab {
+    width: 398px;
+    height: 101px;
+    position: absolute;
+    background: #E9C325;
+    border: none;
+    color: black;
+    font-size: 48px;
+    font-family: Montserrat;
+    font-weight: 700;
+    letter-spacing: 5.76px;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    padding: 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    
+    /* Закругленные углы */
+    border-radius: 50px;
+    
+    /* Изначально скрыты и смещены вниз */
+    opacity: 0;
+    transform: translateY(150px);
+    
+    /* ПЛАВНАЯ АНИМАЦИЯ ПОЯВЛЕНИЯ */
+    transition: transform 1.2s cubic-bezier(0.25, 0.1, 0.2, 1), 
+                opacity 1.2s cubic-bezier(0.25, 0.1, 0.2, 1),
+                background 0s ease,
+                color 0s ease,
+                box-shadow 0s ease;
+    will-change: transform, opacity;
+}
+
+/* Видимое состояние - все кнопки с классом visible */
+.fourth-slide .blog-tab.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ИНДИВИДУАЛЬНЫЕ ЗАДЕРЖКИ ТОЛЬКО ДЛЯ ПОЯВЛЕНИЯ */
+.fourth-slide .blog-tab.tab-obzory.visible {
+    transition-delay: 0.1s, 0.1s, 0s, 0s, 0s !important;
+}
+.fourth-slide .blog-tab.tab-recepty.visible {
+    transition-delay: 0.3s, 0.3s, 0s, 0s, 0s !important;
+}
+.fourth-slide .blog-tab.tab-novosti.visible {
+    transition-delay: 0.5s, 0.5s, 0s, 0s, 0s !important;
+}
+
+/* Стиль для активной вкладки */
+.fourth-slide .blog-tab.active {
+    background: #ffffff;
+    color: #0D3120;
+    box-shadow: 0 0 0 3px #E9C325, 0 6px 15px rgba(0,0,0,0.2);
+}
+
+/* БАЗОВЫЕ СТИЛИ ДЛЯ HOVER - БЕЗ ЗАДЕРЖЕК ДЛЯ ВСЕХ КНОПОК */
+.fourth-slide .blog-tab:hover {
+    transform: scale(1.03) translateY(-2px) !important;
+    box-shadow: 0 12px 25px rgba(233, 195, 37, 0.5) !important;
+    transition: transform 0s ease, 
+                box-shadow 0s ease,
+                background 0s ease,
+                color 0s ease !important;
+    transition-delay: 0s !important;
+}
+
+/* Отдельно управляем цветом при hover */
+.fourth-slide .blog-tab:not(.active):hover {
+    background: #d9b12a !important;
+}
+
+.fourth-slide .blog-tab.active:hover {
+    background: #f5f5f5 !important;
+}
+
+/* Принудительно убираем любые задержки для всех состояний hover */
+.fourth-slide .blog-tab.tab-recepty:hover,
+.fourth-slide .blog-tab.tab-novosti:hover,
+.fourth-slide .blog-tab.tab-obzory:hover {
+    transition-delay: 0s !important;
+}
+
+.fourth-slide .blog-tab:active {
+    transform: scale(0.97) translateY(2px);
+    transition: transform 0.1s ease, box-shadow 0s ease;
+}
+
+/* Позиции для кнопок */
+.tab-obzory { left: 270px; top: 130px; }
+.tab-recepty { left: 770px; top: 130px; }
+.tab-novosti { left: 1280px; top: 130px; }
+
+/* ===== СТИЛИ ДЛЯ КАРТОЧЕК ===== */
+
+/* Обертки для карточек (анимация появления) */
+.blog-card-wrapper {
+    position: absolute;
+    z-index: 3;
+    cursor: pointer;
+    display: block;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    will-change: transform, opacity;
+}
+
+.blog-card-wrapper.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Эффект при наведении на карточки */
+.blog-card-wrapper.visible:hover {
+    transform: scale(1.01) translateY(-8px);
+    z-index: 10;
+    transition: transform 0.25s ease;
+}
+
+/* Карточки блога */
+.blog-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 10px solid #E9C325;
+    border-radius: 37px;
+    overflow: hidden;
+    background: rgba(10, 30, 20, 0.9);
+    width: fit-content;
+}
+
+/* Изображения карточек */
+.blog-image,
+.blog-image-small {
+    display: block;
+    object-fit: cover;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    border-radius: 37px;
+    margin: 10px 10px 0 10px;
+}
+
+.blog-image {
+    width: 332px;
+    height: 332px;
+}
+
+.blog-image-small {
+    width: 331px;
+    height: 331px;
+}
+
+/* Заголовки карточек */
+.blog-card-title {
+    color: white;
+    font-size: 22px;
+    font-family: Montserrat;
+    font-weight: 700;
+    letter-spacing: 2.64px;
+    line-height: 1.4;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    padding: 15px;
+    text-align: left;
+    background: transparent;
+    white-space: normal;
+    word-wrap: break-word;
+    width: calc(100% - 10px);
+    margin: 0 5px 5px 5px;
+}
+
+/* ===== КОНТЕЙНЕРЫ ДЛЯ КАРТОЧЕК ===== */
+.cards-container {
+    position: absolute;
+    top: 295px;
+    left: 0;
+    width: 100%;
+    height: auto;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.3s, opacity 0.3s;
+    pointer-events: none;
+}
+
+.cards-container.active {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Позиционирование карточек внутри контейнера */
+.cards-container .blog-card-wrapper {
+    position: absolute;
+    top: 0;
+    opacity: 1;
+    transform: translateY(0);
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.cards-container .blog-card-wrapper:nth-child(1) { left: 261px; }
+.cards-container .blog-card-wrapper:nth-child(2) { left: 769px; }
+.cards-container .blog-card-wrapper:nth-child(3) { left: 1277px; }
+
+/* ===== АНИМАЦИЯ СЛАЙДА КАРТОЧЕК ===== */
+.cards-container.exit-right {
+    animation: slideOutRight 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+.cards-container.exit-left {
+    animation: slideOutLeft 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+.cards-container.enter-from-left {
+    animation: slideInFromLeft 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+.cards-container.enter-from-right {
+    animation: slideInFromRight 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Улетают вправо */
+@keyframes slideOutRight {
+    0% { transform: translateX(0); opacity: 1; visibility: visible; }
+    100% { transform: translateX(120%); opacity: 0; visibility: hidden; }
+}
+
+/* Улетают влево */
+@keyframes slideOutLeft {
+    0% { transform: translateX(0); opacity: 1; visibility: visible; }
+    100% { transform: translateX(-120%); opacity: 0; visibility: hidden; }
+}
+
+/* Выезжают слева */
+@keyframes slideInFromLeft {
+    0% { transform: translateX(-120%); opacity: 0; visibility: visible; }
+    100% { transform: translateX(0); opacity: 1; visibility: visible; }
+}
+
+/* Выезжают справа */
+@keyframes slideInFromRight {
+    0% { transform: translateX(120%); opacity: 0; visibility: visible; }
+    100% { transform: translateX(0); opacity: 1; visibility: visible; }
+}
+/* ===== БАЗОВЫЕ СТИЛИ ФУТЕРА ===== */
+.footer-container {
+    width: 1920px;
+    height: 414px;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+/* Фоновое изображение */
+.footer-bg {
+    width: 1920px;
+    height: 414px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    object-fit: cover;
+    z-index: 0;
+}
+
+/* Затемнение */
+.footer-overlay {
+    width: 1920px;
+    height: 414px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #0C2519;
+    opacity: 0.9;
+    z-index: 1;
+}
+
+/* Эффекты при наведении */
+.footer-nav-item:hover {
+    color: #E9C325 !important;
+    transition: color 0.3s ease;
+}
+
+.footer-handle:hover {
+    color: #E9C325 !important;
+    transition: color 0.3s ease;
+}
+
+/* Анимация появления */
+.footer-container {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.footer-container.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* Стили для некликабельных контактов в футере */
+.footer-contacts-title {
+    cursor: default !important;
+    pointer-events: none !important;
+}
+
+.footer-contacts-title:hover {
+    color: white !important; /* Отключаем hover-эффект */
+}
+
+
+/* Стили для кнопки О НАС на первом слайде */
+.first-slide .button-group.fly-bottom-delay-2 {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.first-slide .button-group.fly-bottom-delay-2:hover {
+    transform: scale(1.1);
+}
