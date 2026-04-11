@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <title>PURECRAFT</title>
+    
+    <!-- Подключение шрифтов Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Nozhik&display=swap" rel="stylesheet">
+    
+    <!-- Подключение внешнего CSS файла -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Подключение Font Awesome для иконок (для стрелочки) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+</head>
+<body>
+    <!-- ФИКСИРОВАННАЯ ВЕРХНЯЯ ПАНЕЛЬ (двигается за скроллом) -->
+    <div class="fixed-header">
+        <div class="header-content">
+            <!-- Логотип PURECRAFT -->
+            <div style="color: #E9C325; font-size: 64px; font-family: Nozhik; font-weight: 700; letter-spacing: 3.20px;">PURECRAFT</div>
+            
+            <!-- Контейнер для правой части (меню, кнопка, бургер) -->
+            <div class="header-right">
+                <!-- Меню навигации -->
+                <div class="menu-item-fixed">О НАС</div>
+                <div class="menu-item-fixed">КАТАЛОГ</div>
+                <div class="menu-item-fixed">БЛОГ</div>
+                <div class="menu-item-fixed">КОНТАКТЫ</div>
+                
+                <!-- Кнопка КУПИТЬ -->
+                <div class="buy-button-fixed">
+                    <div class="button-text-fixed">КУПИТЬ</div>
+                </div>
+                
+                <!-- БУРГЕР-МЕНЮ -->
+                <div class="burger-container-fixed" id="burgerMenu" onclick="toggleBurger('burgerMenu')">
+                    <div class="burger-line"></div>
+                    <div class="burger-line"></div>
+                    <div class="burger-line"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Мобильное выпадающее меню -->
+<div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-item" data-target="about">О НАС</div>
+    <div class="mobile-menu-item" data-target="catalog">КАТАЛОГ</div>
+    <div class="mobile-menu-item" data-target="blog">БЛОГ</div>
+    <div class="mobile-menu-item" data-target="contacts">КОНТАКТЫ</div>
+</div>
+
+    <!-- ОСНОВНОЙ КОНТЕЙНЕР ДЛЯ ВСЕГО КОНТЕНТА -->
+    <div class="main-container">
+        
+        <!-- ===== ПЕРВЫЙ СЛАЙД ===== -->
+        <div class="slide-container first-slide">
+            <!-- Фоновое изображение с эффектом параллакса -->
+            <img class="parallax-image" id="parallaxImg" src="фон.jpg" alt="Background">
+            
+            <!-- Затемняющий зеленый слой (остается на месте) -->
+            <div style="width: 1920px; height: 1080px; left: 0px; top: 0px; position: absolute; background: #0D3120; opacity: 0.9; z-index: 1;"></div>
+            
+            <!-- Большой логотип PURE CRAFT -->
+            <div class="fly-left-logo" style="left: 435px; top: 150px; position: absolute; color: white; font-size: 300px; font-family: Nozhik; font-weight: 700; line-height: 250px; letter-spacing: 24px; z-index: 3;">PURE <br/>CRAFT</div>
+            
+            <!-- Желтый текст над логотипом -->
+            <div class="fly-bottom-delay-yellow" style="width: 637px; left: 435px; top: 120px; position: absolute; color: #E9C325; font-size: 32px; font-family: Montserrat; font-weight: 500; z-index: 3;">ПРИРОДА ТАКАЯ, КАКАЯ ОНА ЕСТЬ</div>
+            
+            <!-- Нижний текст -->
+            <div class="fly-left-delay" style="left: 436px; top: 650px; position: absolute; color: white; font-size: 32px; font-family: Montserrat; font-weight: 400; letter-spacing: 2.56px; z-index: 3;">натуральная и экологичная косметика <br/>ручной работы</div>
+            
+            <!-- Кнопка КАТАЛОГ -->
+            <div class="button-group fly-bottom-delay" style="left: 435px; top: 750px; width: 195px; height: 60px; z-index: 3;">
+                <div class="button-bg" style="background: #E9C325;"></div>
+                <div class="button-text" style="color: #040404;">КАТАЛОГ</div>
+            </div>
+            
+            <!-- Кнопка О НАС -->
+            <div class="button-group fly-bottom-delay-2" style="left: 656px; top: 750px; width: 195px; height: 60px; z-index: 3;">
+                <div class="button-bg" style="border: 2px solid white; background: transparent;"></div>
+                <div class="button-text" style="color: white;">О НАС</div>
+            </div>
+            
+            <!-- ПРЫГАЮЩАЯ СТРЕЛОЧКА ВНИЗУ -->
+            <div class="scroll-arrow">
+                <i class="fa-solid fa-chevron-down"></i>
+                <div class="scroll-text"></div>
+            </div>
+            
+        </div> <!-- Конец первого слайда -->
+        
+        <!-- ===== БЕГУЩАЯ СТРОКА (ПОСЛЕ ПЕРВОГО СЛАЙДА) ===== -->
+        <div class="bottom-block-yellow" id="scrollingBlock1">
+            <div class="scrolling-text-container">
+                <div class="scrolling-text">
+                    ✦ НАТУРАЛЬНАЯ КОСМЕТИКА РУЧНОЙ РАБОТЫ ✦ БЕЗ ТЕСТОВ НА ЖИВОТНЫХ ✦ ЭКОЛОГИЧНАЯ УПАКОВКА ✦ 100% ОРГАНИЧЕСКИЕ ИНГРЕДИЕНТЫ ✦
+                </div>
+            </div>
+        </div>
+        
+        <!-- ===== ВТОРОЙ СЛАЙД  ===== -->
+        <div class="slide-container second-slide" id="secondSlide">
+            <!-- Контент второго слайда -->
+            <div class="second-slide-content">
+                <!-- Изображение слева -->
+                <img class="second-slide-image" src="лого.png" alt="Placeholder" />
+                
+                <!-- Текст справа -->
+                <div class="second-slide-text">
+                    PureCraft объединяет команду постоянных<br/>
+                    мастеров, но также активно сотрудничает<br/>
+                    с независимыми эко-ремесленниками.<br/>
+                    Мы создали платформу, которая даёт<br/>
+                    возможность талантливым создателям<br/>
+                    натуральной косметики представить свои<br/>
+                    продукты широкой аудитории,<br/>
+                    обеспечивая им надёжный канал сбыта,<br/>
+                    маркетинговую поддержку и готовую<br/>
+                    инфраструктуру интернет-магазина.
+                </div>
+            </div>
+        </div> <!-- Конец второго слайда -->
+        
+<!-- ===== ТРЕТИЙ СЛАЙД (каталог) ===== -->
+<div class="slide-container third-slide" id="thirdSlide">
+    <!-- Фоновое изображение из папки -->
+    <img src="фон для каталога.jpg" alt="Background" class="third-slide-bg">
+    
+    <!-- Затемнение -->
+    <div class="third-slide-overlay"></div>
+    
+    <!-- Нижняя трапеция (слева внизу) - острый угол справа -->
+    <div class="trapezoid-bottom"></div>
+    
+    <!-- Верхняя трапеция (справа вверху) - острый угол слева -->
+    <div class="trapezoid-top"></div>
+    
+    <!-- Заголовок КАТАЛОГ без отступов между буквами -->
+    <div class="catalog-title">
+        КАТАЛОГ
+    </div>
+    
+    <!-- Карточки товаров -->
+    <div class="catalog-items">
+        <!-- Мыло - переход на product-soap.html -->
+        <div class="catalog-item" style="left: 293px; cursor: pointer;" onclick="window.location.href='product-soap.html'">
+            <img src="мыло.jpg" alt="Мыло" class="item-image">
+            <div class="item-title">МЫЛО</div>
+            <div class="item-description">
+                Натуральное мыло с маслом винограда, оливы и какао,<br/>с добавлением эфирного масла <br/>и пудры апельсина.
+            </div>
+        </div>
+        
+        <!-- Скраб - переход на product-scrub.html -->
+        <div class="catalog-item" style="left: 635px; cursor: pointer;" onclick="window.location.href='product-scrub.html'">
+            <img src="скраб.jpg" alt="Скраб" class="item-image">
+            <div class="item-title">СКРАБ ДЛЯ ТЕЛА</div>
+            <div class="item-description">
+                В составе — порошок из скорлупы грецкого ореха и морская соль, богатая минералами и микроэлементами. Эти натуральные абразивы эффективно очищают, улучшают микрорельеф кожи, стимулируют кровообращение и способствуют ее обновлению.
+            </div>
+        </div>
+        
+        <!-- Лосьон - переход на product-lotion.html -->
+        <div class="catalog-item" style="left: 977px; cursor: pointer;" onclick="window.location.href='product-lotion.html'">
+            <img src="лосьон.jpg" alt="Лосьон" class="item-image">
+            <div class="item-title">ЛОСЬОН ДЛЯ ТЕЛА</div>
+            <div class="item-description">
+                Формула лосьона обогащена скваланом из семян камелии и ретинолом, которые работают в комплексе, оказывая ухаживающее и омолаживающее действие.
+            </div>
+        </div>
+        
+        <!-- Шампунь - переход на product-shampoo.html -->
+        <div class="catalog-item" style="left: 1319px; cursor: pointer;" onclick="window.location.href='product-shampoo.html'">
+            <img src="шампунь.jpg" alt="Шампунь" class="item-image">
+            <div class="item-title">ШАМПУНЬ - КОНЦЕНТРАТ</div>
+            <div class="item-description">
+                Масла кокоса и оливы восстанавливают и укрепляют волосы от корней до самых кончиков, придают гладкость и эластичность. Экстракт киви увлажняет волосы, придает блеск и сияние.
+            </div>
+        </div>
+        </div>
+    </div>
+</div> <!-- Конец третьего слайда -->
+
+<!-- ===== ЧЕТВЁРТЫЙ СЛАЙД (БЛОГ) ===== -->
+<div class="slide-container fourth-slide" id="fourthSlide">
+    <!-- Затемнение -->
+    <div class="fourth-slide-bg" style="background: #113625;"></div>
+    <div class="fourth-slide-overlay"></div>
+
+    <!-- КНОПКИ-ВКЛАДКИ -->
+    <button class="blog-tab tab-obzory" data-category="obzory">ОБЗОРЫ</button>
+    <button class="blog-tab tab-recepty" data-category="recepty">РЕЦЕПТЫ</button>
+    <button class="blog-tab tab-novosti" data-category="novosti">НОВОСТИ</button>
+
+    <!-- КОНТЕЙНЕР ДЛЯ КАРТОЧЕК -->
+    <div class="cards-container cards-obzory active">
+        <!-- Карточка 1 Обзоры (Крем1.jpeg) -->
+        <div class="blog-card-wrapper" data-category="obzory" onclick="window.open('https://seasons-project.ru/miru-mir-pyat-brendov-etichnoj-i-ekol/', '_blank')">
+            <div class="blog-card">
+                <img src="Крем1.jpeg" alt="Обзоры 1" class="blog-image" style="width: 332px; height: 332px;">
+                <div class="blog-card-title" style="width: 332px; margin-bottom: 60px">
+                    10 российских брендов<br/>эко-косметики
+                </div>
+            </div>
+        </div>
+        
+        <!-- Карточка 2 Обзоры (Крем2.jpg) -->
+        <div class="blog-card-wrapper" data-category="obzory" onclick="window.open('https://ecomake.ru/blog/sostav-naturalnoy-kosmetiki-kakie-ingredienty-ispolzuyutsya/', '_blank')">
+            <div class="blog-card">
+                <img src="Крем2.jpg" alt="Обзоры 2" class="blog-image" style="width: 332px; height: 332px;">
+                <div class="blog-card-title" style="width: 332px; margin-bottom: 30px;">
+                    Состав натуральной косметики: какие ингредиенты<br/>используются
+                </div>
+            </div>
+        </div>
+        
+        <!-- Карточка 3 Обзоры (Крем3.jpg) -->
+        <div class="blog-card-wrapper" data-category="obzory" onclick="window.open('https://www.livemaster.ru/topic/2688691-shpargalka-po-naturalnym-ingredientam-v-kosmetike', '_blank')">
+            <div class="blog-card">
+                <img src="Крем3.jpg" alt="Обзоры 3" class="blog-image" style="width: 332px; height: 332px;">
+                <div class="blog-card-title" style="width: 332px; margin-bottom: 30px;">
+                    Шпаргалка по натуральным ингредиентам в косметике
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- КОНТЕЙНЕР ДЛЯ КАРТОЧЕК -->
+    <div class="cards-container cards-recepty">
+        <!-- Карточка 1 Рецепты -->
+        <div class="blog-card-wrapper" data-category="recepty" onclick="window.open('https://dzen.ru/suite/7d2d9358-75b9-4d20-b32a-4e5d9b45d138?ysclid=mmbn7s3du3110006874', '_blank')">
+            <div class="blog-card">
+                <img src="Рецепт1.jpg" alt="Рецепты 1" class="blog-image" style="width: 332px; height: 332px;">
+                <div class="blog-card-title" style="width: 332px; margin-bottom: 50px;">
+                    Парфюмерия<br/>и косметика<br/>своими руками
+                </div>
+            </div>
+        </div>
+        <!-- Карточка 2 Рецепты -->
+        <div class="blog-card-wrapper" data-category="recepty" onclick="window.open('https://lalavanda.school/category/diy-reczepty/', '_blank')">
+            <div class="blog-card">
+                <img src="Рецепт2.jpg" alt="Рецепты 2" class="blog-image" style="width: 332px; height: 332px;">
+                <div class="blog-card-title" style="width: 332px; margin-bottom: 110px;">
+                    DIY-рецепты
+                </div>
+            </div>
+        </div>
+        <!-- Карточка 3 Рецепты -->
+        <div class="blog-card-wrapper" data-category="recepty" onclick="window.open('https://food.ru/articles/15973-kak-sdelat-kosmetiku-iz-ovoshchej-fruktov-i-zeleni', '_blank')">
+            <div class="blog-card">
+                <img src="Рецепт3.jpg" alt="Рецепты 3" class="blog-image" style="width: 332px; height: 332px;">
+                <div class="blog-card-title" style="width: 332px; margin-bottom: 20px;">
+                    Как сделать косметику из<br/>овощей, фруктов<br/> и зелени
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- КОНТЕЙНЕР ДЛЯ КАРТОЧЕК -->
+    <div class="cards-container cards-novosti">
+        <!-- Карточка 1 Новости -->
+        <div class="blog-card-wrapper" data-category="novosti" onclick="window.open('https://www.forbes.ru/sustainability/550266-na-100-natural-naa-ulovka-kak-proizvoditeli-kosmetiki-vydaut-tovary-za-ekologicnye?ysclid=mmbnovxi1e355093344', '_blank')">
+            <div class="blog-card">
+                <img src="Новости1.jpg" alt="Новости 1" class="blog-image" style="width: 332px; height: 332px;">
+                <div class="blog-card-title" style="width: 332px; margin-bottom: 30px;">
+                    На 100% натуральная уловка:<br/>как производители косметики выдают<br/>товары за экологичные
+                </div>
+            </div>
+        </div>
+        <!-- Карточка 2 Новости -->
+        <div class="blog-card-wrapper" data-category="novosti" onclick="window.open('https://vc.ru/legal/1727952-zelenyi-svet-novyi-standart-dlya-eko-kosmetiki?ysclid=mmbnxcog3l668286276', '_blank')">
+            <div class="blog-card">
+                <img src="Новости2.png" alt="Новости 2" class="blog-image" style="width: 332px; height: 332px;">
+                <div class="blog-card-title" style="width: 332px; margin-bottom: 110px;">
+                    Зелёный свет: новый стандарт<br/> для эко-косметики
+                </div>
+            </div>
+        </div>
+        <!-- Карточка 3 Новости -->
+        <div class="blog-card-wrapper" data-category="novosti" onclick="window.open('https://companies.rbc.ru/news/bZVkg6taFF/trendyi-v-naturalnoj-kosmetike-iz-nishi-v-strategicheskij-biznes/?ysclid=mmbo4pctr0671110228', '_blank')">
+            <div class="blog-card">
+                <img src="Новости3.jpeg" alt="Новости 3" class="blog-image" style="width: 332px; height: 332px;">
+                <div class="blog-card-title" style="width: 332px; margin-bottom: 45px;">
+                    Тренды в натуральной<br/>косметике: из ниши<br/> в стратегический бизнес
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        <!-- ===== ФУТЕР ===== -->
+        <div class="footer-container">
+            <!-- Фоновое изображение -->
+            <div class="footer-bg" style="background-color: #0C2519;"></div>
+            
+            <!-- Затемнение -->
+            <div class="footer-overlay"></div>
+            
+            <!-- КОНТЕЙНЕР ДЛЯ КОНТЕНТА -->
+            <div class="footer-content" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0; z-index: 2;">
+                
+                <!-- ЛОГОТИП -->
+                <div class="footer-logo" style="
+                    position: absolute;
+                    left: 56px;
+                    top: 40px; /* Измените это значение для сдвига вверх/вниз */
+                    color: #E9C325;
+                    font-size: 96px;
+                    font-family: Nozhik;
+                    font-weight: 700;
+                    letter-spacing: 4.80px;
+                    white-space: nowrap;
+                ">PURECRAFT</div>
+                
+                <!-- НАВИГАЦИЯ (О НАС, КАТАЛОГ, БЛОГ) -->
+                <div class="footer-nav" style="
+                    position: absolute;
+                    left: 950px;
+                    top: 118px; /* Измените это значение для сдвига вверх/вниз */
+                    display: flex;
+                    flex-direction: column;
+                    gap: 30px;
+                ">
+                    <div class="footer-nav-item" style="
+                        color: white;
+                        font-size: 32px;
+                        font-family: Montserrat;
+                        font-weight: 700;
+                        letter-spacing: 1.60px;
+                        text-align: right;
+                        cursor: pointer;
+                        white-space: nowrap;
+                    ">О НАС</div>
+                    
+                    <div class="footer-nav-item" style="
+                        color: white;
+                        font-size: 32px;
+                        font-family: Montserrat;
+                        font-weight: 700;
+                        letter-spacing: 1.60px;
+                        text-align: right;
+                        cursor: pointer;
+                        white-space: nowrap;
+                    ">КАТАЛОГ</div>
+                    
+                    <div class="footer-nav-item" style="
+                        color: white;
+                        font-size: 32px;
+                        font-family: Montserrat;
+                        font-weight: 700;
+                        letter-spacing: 1.60px;
+                        text-align: right;
+                        cursor: pointer;
+                        white-space: nowrap;
+                    ">БЛОГ</div>
+                </div>
+                
+                <!-- КОНТАКТЫ -->
+                <div class="footer-contacts" style="
+                    position: absolute;
+                    left: 1300px;
+                    top: 118px; /* Измените это значение для сдвига вверх/вниз */
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-end;
+                    gap: 30px;
+                ">
+                    <div class="footer-contacts-title" style="
+                        color: white;
+                        font-size: 36px;
+                        font-family: Montserrat;
+                        font-weight: 700;
+                        letter-spacing: 1.60px;
+                        text-transform: uppercase;
+                        text-align: right;
+                    ">КОНТАКТЫ</div>
+                    
+                    <div class="footer-phone" style="
+                        color: white;
+                        font-size: 32px;
+                        font-family: Montserrat;
+                        font-weight: 700;
+                        letter-spacing: 1.60px;
+                        white-space: nowrap;
+                        text-align: right;
+                    ">+8 (800) 555 35 35</div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- Конец main-container -->
+
+    <!-- Подключение внешнего JavaScript файла -->
+    <script src="script.js"></script>
+    
+    <!-- Скрипты для параллакс-эффектов и анимаций -->
+    <script>
+        // Эффект параллакса для изображения на первом слайде
+        window.addEventListener('scroll', function() {
+            const parallaxImage = document.getElementById('parallaxImg');
+            if (parallaxImage) {
+                const scrollY = window.scrollY;
+                if (scrollY <= 1200) {
+                    const translateY = scrollY * 0.2;
+                    parallaxImage.style.transform = `translateY(${translateY}px)`;
+                }
+            }
+            
+            // Параллакс для третьего слайда
+            const thirdSlideBg = document.querySelector('.third-slide-bg');
+            if (thirdSlideBg) {
+                const scrollY = window.scrollY;
+                const thirdSlide = document.getElementById('thirdSlide');
+                
+                if (thirdSlide) {
+                    const thirdSlideTop = thirdSlide.offsetTop;
+                    const thirdSlideHeight = thirdSlide.offsetHeight;
+                    const scrollRelative = scrollY - thirdSlideTop;
+                    
+                    if (scrollRelative > -100 && scrollRelative < thirdSlideHeight + 100) {
+                        const translateY = scrollRelative * 0.2;
+                        
+                        const maxTranslate = 150;
+                        const minTranslate = -150;
+                        
+                        let finalTranslate = translateY;
+                        if (finalTranslate > maxTranslate) finalTranslate = maxTranslate;
+                        if (finalTranslate < minTranslate) finalTranslate = minTranslate;
+                        
+                        thirdSlideBg.style.transform = `translateY(${finalTranslate}px)`;
+                    }
+                }
+            }
+        });
+    </script>
+
+    <!-- Скрипт для анимации появления при скролле до второго слайда -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const secondSlide = document.getElementById('secondSlide');
+            const secondSlideText = document.querySelector('.second-slide-text');
+            const secondSlideImage = document.querySelector('.second-slide-image');
+            
+            // Флаг, чтобы анимация запускалась только один раз
+            let secondAnimationPlayed = false;
+            
+            // Скрываем элементы изначально
+            if (secondSlideText) {
+                secondSlideText.style.opacity = '0';
+                secondSlideText.style.transform = 'translateY(30px)';
+            }
+            if (secondSlideImage) {
+                secondSlideImage.style.opacity = '0';
+                secondSlideImage.style.transform = 'translateY(30px)';
+            }
+            
+            // Создаем Intersection Observer для второго слайда
+            const secondObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !secondAnimationPlayed) {
+                        secondAnimationPlayed = true;
+                        
+                        if (secondSlideText) {
+                            secondSlideText.style.transition = 'opacity 1s ease-out, transform 1s ease-out';
+                            secondSlideText.style.opacity = '1';
+                            secondSlideText.style.transform = 'translateY(0)';
+                        }
+                        
+                        if (secondSlideImage) {
+                            setTimeout(() => {
+                                secondSlideImage.style.transition = 'opacity 1s ease-out, transform 1s ease-out';
+                                secondSlideImage.style.opacity = '1';
+                                secondSlideImage.style.transform = 'translateY(0)';
+                            }, 200);
+                        }
+                        
+                        secondObserver.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.3,
+                rootMargin: '0px'
+            });
+            
+            if (secondSlide) {
+                secondObserver.observe(secondSlide);
+            }
+        });
+    </script>
+
+    <!-- Скрипт для анимации появления при скролле до третьего слайда -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const thirdSlide = document.getElementById('thirdSlide');
+            const catalogTitle = document.querySelector('.catalog-title');
+            const catalogItems = document.querySelectorAll('.catalog-item');
+            
+            // Флаг, чтобы анимация запускалась только один раз
+            let thirdAnimationPlayed = false;
+            
+            // Скрываем элементы изначально
+            if (catalogTitle) {
+                catalogTitle.style.opacity = '0';
+            }
+            
+            catalogItems.forEach(item => {
+                item.style.opacity = '0';
+            });
+            
+            // Создаем Intersection Observer для третьего слайда
+            const thirdObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    // Запускаем анимацию только если слайд виден и анимация еще не играла
+                    if (entry.isIntersecting && !thirdAnimationPlayed) {
+                        // Помечаем, что анимация запущена
+                        thirdAnimationPlayed = true;
+                        
+                        // Запускаем анимацию для заголовка
+                        if (catalogTitle) {
+                            catalogTitle.style.transition = 'opacity 1s ease-out, transform 1s ease-out';
+                            catalogTitle.style.opacity = '1';
+                            catalogTitle.style.transform = 'translateX(0)';
+                        }
+                        
+                        // Запускаем анимацию для каждой карточки с задержкой
+                        catalogItems.forEach((item, index) => {
+                            setTimeout(() => {
+                                item.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+                                item.style.opacity = '1';
+                                item.style.transform = 'translateY(0)';
+                            }, 200 + (index * 200));
+                        });
+                        
+                        // Отключаем наблюдатель после срабатывания
+                        thirdObserver.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.3,
+                rootMargin: '0px'
+            });
+            
+            // Начинаем наблюдение за третьим слайдом
+            if (thirdSlide) {
+                thirdObserver.observe(thirdSlide);
+            }
+        });
+    </script>
+    
+</body>
+</html>
